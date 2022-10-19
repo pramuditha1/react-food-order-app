@@ -1,5 +1,5 @@
 import React from 'react'
-import cafeImage from '../../assets/Cafe-Header-2.jpg'
+import cafeImage from '../../assets/banner.jpg'
 import classes from './Header.module.css'
 import HeaderCartButton from './HeaderCartButton'
 
