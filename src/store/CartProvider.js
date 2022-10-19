@@ -7,10 +7,32 @@ const defaultCartState = {
 }
 const cartReducer = (state, action) => {
     if (action.type === "ADD") {
-        const updatedItems = state.items.concat(action.item)
+        //calculate total amount
         const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount
+
+        //chack existing items na get id if already available
+        const existingItemIndex = state.items.findIndex(
+            (item) => item.id === action.item.id
+          );
+        //get existing item form state.items
+        const existingItem = state.items[existingItemIndex];
+
+        //cart items holding global variable
+        let updatedCartItems;
+
+        //if existing item available update that with action.item.amount
+        if (existingItem) {
+            const updatedCartItem = {
+                ...existingItem,
+                amount: action.item.amount + existingItem.amount
+            }
+            updatedCartItems = [...state.items]
+            updatedCartItems[existingItemIndex] = updatedCartItem;
+        } else {
+            updatedCartItems = state.items.concat(action.item)
+        } 
         return {
-            items: updatedItems,
+            items: updatedCartItems,
             totalAmount: updatedTotalAmount,
         }
     }
