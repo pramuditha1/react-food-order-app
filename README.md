@@ -5,6 +5,3 @@ This project is written in reactJS using basic react concepts such as,
 
 ## to run the application
 ### `npm install` then `npm start`
-
-## live running URL
-https://cafenoir.netlify.app
